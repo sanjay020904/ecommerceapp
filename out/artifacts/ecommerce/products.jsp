@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Products" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: S.Sanjay
   Date: 24-03-2026
@@ -19,57 +20,46 @@
     <h1>My E-Commerce Store</h1>
     <p>Explore Our Latest Products</p>
 </header>
+<%   if(session.getAttribute("username")==null)
+{
+    response.sendRedirect("login.jsp");
+}
+    List<Products> products = (List<Products>) request.getAttribute("products");
+
+%>
 
 <!-- Product Section -->
 <div style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px;">
 
-    <!-- Product Card 1 -->
-    <div style="background: white; width: 250px; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-        <img src="images/product1.jpg" alt="Product 1" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
-        <h3>Product Name 1</h3>
-        <p>₹999</p>
-        <button style="background-color: #6a5acd; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
-            Add to Cart
-        </button>
-    </div>
+    <% if(products !=null && !products.isEmpty())
+        {
+            for(Products p:products){
 
-    <!-- Product Card 2 -->
+     %>
     <div style="background: white; width: 250px; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-        <img src="images/product2.jpg" alt="Product 2" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
-        <h3>Product Name 2</h3>
-        <p>₹1499</p>
-        <button style="background-color: #6a5acd; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
-            Add to Cart
-        </button>
-    </div>
+        <img src="<%= p.getImage()%>"
+             style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+        <h3><%= p.getName()%></h3>
+        <p><%= p.getPrice()%></p>
+        <p><%= p.getCategory()%></p>
+        <p><%= p.getStock()%></p>
 
-    <!-- Product Card 3 -->
-    <div style="background: white; width: 250px; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
-        <img src="images/product3.jpg" alt="Product 3" style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
-        <h3>Product Name 3</h3>
-        <p>₹799</p>
+
         <button style="background-color: #6a5acd; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
             Add to Cart
         </button>
     </div>
+   <%
+      }
+    }
+    else{
+
+      %>  <p>no products available...</p>
+    <%
+        }
+    %>
+
 
 </div>
-
-<!-- Footer -->
-<footer style="background-color: #6a5acd; color: white; text-align: center; padding: 10px;">
-    <p>© 2026 My Store | All Rights Reserved</p>
-</footer>
-<%
-    if(session.getAttribute("username")==null)
-    {
-        response.sendRedirect("login.jsp");
-    }
-%>
 </body>
-
-
-
-
-
-
 </html>

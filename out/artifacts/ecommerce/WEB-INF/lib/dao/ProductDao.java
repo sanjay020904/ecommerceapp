@@ -23,16 +23,16 @@ public class ProductDao {
             while(rs.next())
             {
                 Products pr=new Products();
-                pr.setProduct_id(rs.getInt("product_id "));
+                pr.setProduct_id(rs.getInt("product_id"));
                 pr.setName(rs.getString("name"));
                 pr.setPrice(rs.getDouble("price"));
+                pr.setStock(rs.getInt("stock"));
                 pr.setCategory(rs.getString("category"));
+                pr.setImage(rs.getString("image"));
+                list.add(pr);
 
             }
-
-
-            int count=ps.executeUpdate();
-
+            System.out.println("List size: " + list.size());
            return list;
         }
 

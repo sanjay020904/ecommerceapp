@@ -11,6 +11,12 @@
     <title>Title</title>
 </head>
 <body style="margin:0; padding:0; font-family: 'Poppins', Arial, sans-serif; background: lavender;">
+<%
+    response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+%>
 
 <!-- Center Container -->
 <div style="display:flex; justify-content:center; align-items:center; height:100vh;">

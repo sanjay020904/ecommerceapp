@@ -14,6 +14,13 @@
 
 
 <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 0;">
+<%
+    response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+%>
+
 
 <!-- Header -->
 <header style="background-color: #6a5acd; color: white; padding: 15px; text-align: center;">
@@ -39,15 +46,16 @@
     <div style="background: white; width: 250px; border-radius: 10px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
         <img src="<%= p.getImage()%>"
              style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
-        <h3><%= p.getName()%></h3>
-        <p><%= p.getPrice()%></p>
-        <p><%= p.getCategory()%></p>
-        <p><%= p.getStock()%></p>
+        <h3>NAME:<%= p.getName()%></h3>
+        <p>PRICE:<%= p.getPrice()%></p>
 
 
-        <button style="background-color: #6a5acd; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
-            Add to Cart
-        </button>
+        <form action="Cart">
+            <input type="hidden" name="productId" value="<%= p.getProduct_id()%>">
+            <input type="hidden" name="action" value="add">
+            <button style="background-color: #6a5acd; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Add to Cart</button>
+        </form>
+
     </div>
    <%
       }

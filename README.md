@@ -1,17 +1,24 @@
-Project: E-Commerce Web App
+# E-Commerce Web Application (Java)
 
-Tech Stack:
-- Java (Servlets, JSP)
+## Tech Stack
+- Java Servlets, JSP
+- JDBC, MySQL
 - HTML, CSS
 - Apache Tomcat
 
-Features:
-- User Authentication
-- Product Listing
-- Cart Management (Add/Remove)
-- Session Handling
+## Features
+- User Login & Registration
+- Product Listing (DB driven)
+- Cart Management (Session-based)
+- Logout with cache handling
 
-Future Improvements:
-- Database Integration
+## Setup
+1. Import project in IntelliJ/Eclipse
+2. Configure Tomcat server
+3. Setup MySQL DB using provided SQL file
+4. Run project
+
+## Future Improvements
 - Authentication Filter
 - Password Encryption
+- MVC Refactoring

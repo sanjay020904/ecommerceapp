@@ -18,6 +18,11 @@
 3. Setup MySQL DB using provided SQL file
 4. Run project
 
+## Database Design
+- Users → Stores user credentials
+- Products → Stores product details
+- Cart → Maps users with products (Many-to-Many relationship)
+
 ## Future Improvements
 - Authentication Filter
 - Password Encryption

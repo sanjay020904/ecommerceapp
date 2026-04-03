@@ -16,6 +16,15 @@
 
 
 %>
+<%
+    String username = (String) session.getAttribute("username");
+
+    if (username == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 
 
 <h1 style="text-align:center;">Cart</h1>
@@ -77,22 +86,21 @@
 <%
     } // end else
 %>
-
+<%
+    if(session.getAttribute("username") != null){
+%>
 <form action="logout">
     <button type="submit"
             style="background:#4B0082; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer; font-size:16px;">
         Logout
     </button>
-    <%
-        response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
-        response.setHeader("Pragma", "no-cache");
-        response.setDateHeader("Expires", 0);
 
-
-
-    %>
 
 </form>
+<%
+    }
+%>
+
 
 </body>
 </html>
